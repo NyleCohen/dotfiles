@@ -23,11 +23,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
-Plug 'tsony-tsonev/nerdtree-git-plugin'
+" Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+"Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
@@ -36,8 +37,16 @@ Plug 'morhetz/gruvbox'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
-Plug 'lambdalisue/suda.vim'
+" Plug 'lambdalisue/suda.vim'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tamelion/neovim-molokai'
 " Initialize plugin system
+
+colorscheme monokai
+
+hi Normal guibg=NONE ctermbg=NONE
+
 call plug#end()
 
 inoremap jk <ESC>
@@ -45,3 +54,20 @@ inoremap jk <ESC>
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <SPACE> <Nop>
+let mapleader=" "
+
+let g:NERDCreateDefaultMappings = 0
+noremap <CTRL></>:call NERDComment(0,"toggle") 
