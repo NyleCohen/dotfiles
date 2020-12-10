@@ -1,5 +1,6 @@
+" g:nvim_system_wide = 1
 " Enable suda smart edit
-let g:suda_smart_edit = 1
+" let g:suda_smart_edit = 1
 
 set nocompatible            " disable compatibility to old-time vi
 " set showmatch               " show matching brackets.
@@ -20,7 +21,7 @@ set nowrap                  " Dont wrap lines
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
-
+"call plug#begin('/usr/local/share/nvim/site')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 " Plug 'tsony-tsonev/nerdtree-git-plugin'
@@ -29,7 +30,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+"Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'christoomey/vim-tmux-navigator'
@@ -37,10 +38,14 @@ Plug 'morhetz/gruvbox'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
-" Plug 'lambdalisue/suda.vim'
+Plug 'lambdalisue/suda.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tamelion/neovim-molokai'
+Plug 'tpope/vim-eunuch'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'sbdchd/neoformat'
 " Initialize plugin system
 
 colorscheme monokai
@@ -51,6 +56,7 @@ call plug#end()
 
 inoremap jk <ESC>
 
+map <C-p> :FZF<CR>
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
@@ -70,4 +76,5 @@ inoremap <SPACE> <Nop>
 let mapleader=" "
 
 let g:NERDCreateDefaultMappings = 0
-noremap <CTRL></>:call NERDComment(0,"toggle") 
+vmap cc <plug>NERDCommenterToggle
+nmap cc <plug>NERDCommenterToggle

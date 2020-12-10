@@ -1,0 +1,1 @@
+/home/nyle/.config/nvim/init.vim
