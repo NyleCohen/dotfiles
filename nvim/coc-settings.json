@@ -1,5 +1,5 @@
 {
     "coc.preferences.formatOnSaveFiletypes": [
-        "rust"
+        "rust", "typescript", "javascript", "markdown", "html", "css"
     ]
 }
